@@ -54,6 +54,8 @@ pub fn value_to_color_string(value: usize) -> String {
             ResistorColor::White => color_string.push_str("White"),
             ResistorColor::Yellow => color_string.push_str("Yellow"),
         }
+    }else{
+        return String::from("value out of range");
     }
     return color_string;
 }
@@ -66,8 +68,8 @@ pub fn colors() -> Vec<ResistorColor> {
 }
 
 fn bubble_sort_resistor_color_by_value(resistor_colors: &mut Vec<ResistorColor>){
-    for i in 0..(resistor_colors.len()-2){
-        for j in i..resistor_colors.len()-1{
+    for i in 0..(resistor_colors.len()-1){
+        for j in 0..resistor_colors.len()-i-1{
             if resistor_colors[j].int_value() > resistor_colors[j+1].int_value(){
                 {
                     let temp_val = resistor_colors[j];
