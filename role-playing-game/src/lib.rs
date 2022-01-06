@@ -31,7 +31,11 @@ impl Player {
                 return 0;
             }
         }else{
-            self.health = self.health - mana_cost;
+            if !(mana_cost > self.health){
+                self.health = self.health - mana_cost;
+            }else {
+                self.health = 0;
+            }
             return 0;
         }
     }
